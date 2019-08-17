@@ -1,0 +1,7 @@
+{
+  "name": "charts_app",
+  "private": true,
+  "dependencies": {
+    "chart.js": "^2.8.0"
+  }
+}
