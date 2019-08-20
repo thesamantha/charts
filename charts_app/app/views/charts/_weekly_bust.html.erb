@@ -1,0 +1,32 @@
+<%= javascript_tag do %>
+  var chart_labels_pre = [<%= raw @chart_labels.to_json %>];
+  var chart_labels = []
+  for(var i in chart_labels_pre)
+    for(var j in chart_labels_pre[i])
+      chart_labels.push(chart_labels_pre[i][j])
+  var chart_data   = "<%= @chart_data %>";
+<% end %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: chart_labels,
+          datasets: [{
+              data: JSON.parse(chart_data),
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.5)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)'
+              ],
+              borderWidth: 5
+          }]
+      },
+      options: {
+        cutoutPercentage: 30
+      }
+  });
+</script>

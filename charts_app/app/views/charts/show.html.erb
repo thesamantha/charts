@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>World population</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1><%= @chart.name %></h1>
+      <h2>Graphical Representation of Nutrient Intake, averaged by Number of Days</h2>
+      Days: x
+      <canvas id="myChart" width="1600" height="900"></canvas>
+
+      <%= render "#{@chart.name}" %>
+    </div>
+  </body>
+</html>
