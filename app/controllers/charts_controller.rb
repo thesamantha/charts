@@ -13,11 +13,11 @@ class ChartsController < ApplicationController
     @chart = Chart.find(params[:id])
     @chart_labels = []
     @chart_data   = []
-    #@chart_colors = []
+    @chart_colors = []
     @chart.inputs.each do |input|
       @chart_labels.push(input.name.to_s)
       @chart_data.push(input.quantity)
-      #@chart_colors.push(input.color)
+      @chart_colors.push(input.color)
     end
     #binding.irb
   end

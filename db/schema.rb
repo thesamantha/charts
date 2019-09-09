@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_210737) do
+ActiveRecord::Schema.define(version: 2019_09_09_114110) do
 
   create_table "charts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -31,12 +31,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_210737) do
     t.string "origin"
     t.string "color"
     t.integer "chart_id"
+    t.string "chart_name"
     t.index ["chart_id"], name: "index_inputs_on_chart_id"
-  end
-
-  create_table "intakes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

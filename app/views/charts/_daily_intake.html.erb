@@ -4,6 +4,13 @@
   for(var i in chart_labels_pre)
     for(var j in chart_labels_pre[i])
       chart_labels.push(chart_labels_pre[i][j])
+
+  var chart_colors_pre = [<%= raw @chart_colors.to_json %>];
+  var chart_colors = []
+  for(var i in chart_colors_pre)
+    for(var j in chart_colors_pre[i])
+      chart_colors.push(chart_colors_pre[i][j])
+
   var chart_data   = "<%= @chart_data %>";
 <% end %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -11,28 +18,21 @@
 <script>
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'polarArea',
+      type: 'pie',
       data: {
           labels: chart_labels,
           datasets: [{
               data: JSON.parse(chart_data),
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.5)',
-                  'rgba(54, 162, 235, 0.5)',
-                  'rgba(33, 165, 33, 0.5)',
-                  'rgba(99, 33, 165, 0.5)'
-              ],
+              backgroundColor: chart_colors,
               borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(33, 165, 33, 1)',
-                  'rgba(99, 33, 165, 1)'
+                'rgba(63, 191, 63, 0.5)',
+                'rgba(63, 191, 63, 0.5)'
               ],
               borderWidth: 5
           }]
       },
       options: {
-        cutoutPercentage: 30
+        //cutoutPercentage: 30
       }
   });
 </script>

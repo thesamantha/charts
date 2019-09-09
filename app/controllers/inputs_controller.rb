@@ -25,11 +25,15 @@ class InputsController < ApplicationController
   # POST /inputs.json
   def create
     #binding.irb
-    @input = Input.new
-    @input.name     = params[:name]
-    @input.quantity = params[:quantity]
-    @input.origin   = params[:origin]
-    @input.color    = params[:color]
+    @input            = Input.new
+    @input.name       = params[:name]
+    @input.quantity   = params[:quantity]
+    @input.origin     = params[:origin]
+    @input.color      = params[:color]
+    @input.chart_name = params[:chart_name]
+    chart             = Chart.find_by(name: @input.chart_name.to_s)
+    chart.inputs.push(@input)
+    chart.save
 
     respond_to do |format|
       if @input.save
